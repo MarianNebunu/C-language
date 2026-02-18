@@ -1,0 +1,3 @@
+2 amd ddr2 120gb asus realtec ati 12-09-2002 xp 
+3 amd ddr2 120gb asus realtec ati 12-09-2001 xp
+4 intel ddr3 10gb msio rasdac nvidia 12-09-2003 vista

@@ -1,0 +1,37 @@
+[common]
+filename=E:\FACULTATE\AN1\SDA\arbori cu subliste.pdf
+DicFile=C:\Program Files (x86)\ElcomSoft\Advanced PDF Password Recovery\english.dic
+Attack=0
+Priority=0
+SaveSetup=1
+SaveTime=5
+PDFPwdType=2
+[passlen]
+MinLen=4
+MaxLen=8
+[brute-force]
+AllCaps=1
+AllSmall=1
+AllDigits=0
+AllSpecial=0
+Space=0
+AllPrint=0
+Custom=0
+IsOEM=0
+IsDictOEM=0
+CustomCharSet=
+StartFrom=BmBmy
+EndAt=
+mask=
+[dictionary]
+CapF=0
+CapA=0
+DicStartLine=
+[Advanced]
+CodeOptFor=2
+[KeySearch]
+PDFKSStartFrom=0
+PDFKSEndAt=65535
+PDFKSKey=
+UserHashes=0
+UserHashesPath=
