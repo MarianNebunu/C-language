@@ -1,0 +1,4 @@
+daca elemetele listei se pastreaza intr-o memorie heap iar intr-o memorie statica sau pe stiva se aloca un tablou de pointeri spre elementele listei 
+suficient de mare. Pointeri near aloca spatiu de 16 biti iar pointeri far aloca memorie de 32 de biti. Aceasta solutie este eficienta in cazul 
+in care un element al listei consuma considerabil mai mult spatiu decat un pointer. in acest caz memoria heap este folosita eficient ,
+deoarece ia contine in fiecare moment numai elementele necesare dintr-o lista

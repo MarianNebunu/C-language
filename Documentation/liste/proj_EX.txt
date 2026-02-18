@@ -1,0 +1,180 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <string.h>
+
+typedef enum disponibil {imprumutat,neimprumutat}disp;
+
+typedef enum tematic {stinta,religie,geografie}tematica;
+
+typedef struct date {
+	int zi;
+	int luna;
+	int an;
+} data;
+
+typedef struct filme_artisitce {
+	char *titlu;
+	char *regizor;
+	int an_aparitie;
+	int durata;
+    disp disponibilitate; 
+	char *nume_pers_imprumut;
+	data *imprumut;
+	data *returnare;
+	struct filme_artistice *urm;	
+} artistice;
+
+typedef struct filme_documentare {
+	char *titlu;
+	char *regizor;
+	int an_aparitie;
+	int durata;
+    disp disponibilitate; 
+	char *nume_pers_imprumut;
+	data *imprumut;
+	data *returnare;	
+	tematica tematic;
+	struct filme_documentatie *urm;
+} documentare;
+
+typedef struct concert {
+	data concert;
+	int durata;
+	char *locatie;
+	int nr_spectatori;
+	char *piese;
+	disp disponibilitate; 
+	char *nume_pers_imprumut;
+	data *imprumut;	
+	data *returnare;
+	struct concert *urm;
+}concerte;
+
+artistice *primg;
+
+artistice *add_film_artistic(artistice *prim) {
+	artistice *temp,*nou;
+	char titlu[22], regizor[22],nume_pers_imprumut[22];
+	int an_ap, durata, disp;
+	data *imprumut,*returnare;
+	system("cls");
+
+	printf ("Introduceti date\n");
+	printf("Titlu: ");
+	fflush(stdin);
+	gets(titlu);
+	printf("Regizor: ");
+	fflush(stdin);
+	gets(regizor);
+	printf("An aparitie: ");
+	scanf("%d",&an_ap);
+	printf("Durata: ");
+	scanf("%d",&durata);
+	printf("Disponibilitate  (0 - NU, 1 - DA):");
+	scanf("%d",&disp);
+	if(!disp) {
+		imprumut=(data*)malloc(sizeof(data));
+		returnare=(data*)malloc(sizeof(data));
+		printf("Nume persoana imprumut:");
+		fflush(stdin);
+		gets(nume_pers_imprumut);
+		printf("Data imprumut\nZi: ");
+		scanf("%d",&imprumut->zi);
+		printf("Luna: ");
+		scanf("%d",&imprumut->luna);
+		printf("An: ");
+		scanf("%d",&imprumut->an);
+		
+		printf("Data returnat\nZi: ");
+		scanf("%d",&returnare->zi);
+		printf("Luna: ");
+		scanf("%d",&returnare->luna);
+		printf("An: ");
+		scanf("%d",&returnare->an);
+		
+	}
+	
+	nou=(artistice*)malloc(sizeof(artistice));
+	nou->titlu=(char*)malloc(sizeof(titlu));
+	nou->regizor=(char*)malloc(sizeof(regizor));
+	if(!disp) {
+		nou->nume_pers_imprumut=(char*)malloc(sizeof(nume_pers_imprumut));
+		strcpy(nou->nume_pers_imprumut,nume_pers_imprumut);
+		nou->imprumut=(data*)malloc(sizeof(data));
+		nou->returnare=(data*)malloc(sizeof(data));
+		
+		nou->imprumut->an=imprumut->an;
+		nou->imprumut->luna=imprumut->luna;
+		nou->imprumut->zi=imprumut->zi;		
+		
+		nou->returnare->an=returnare->an;
+		nou->returnare->luna=returnare->luna;
+		nou->returnare->zi=returnare->zi;
+	}
+	
+	strcpy(nou->titlu,titlu);
+	strcpy(nou->regizor,regizor);
+	nou->an_aparitie=an_ap;
+	nou->durata=durata;
+	nou->disponibilitate=disp;
+	
+	if(prim==NULL) {
+		prim=nou;
+		prim->urm=NULL;
+	}
+	else {
+		temp=prim;
+		while(temp->urm!=NULL) {
+			temp=temp->urm;
+		}
+		temp->urm=nou;
+		nou->urm=NULL;
+		
+	}
+	
+	return prim;
+}
+
+
+void afisare_alfabetica_titlu(artistice *prim) {
+	artistice *temp;
+	temp=prim;
+	while(temp!=NULL) {
+		printf("titlu: %s\n",temp->titlu);
+		temp=temp->urm;	
+	}
+	
+	
+}
+
+int Meniu() {
+	int opt;
+	primg=NULL;
+	do {
+		printf("\t\t\tMeniu\n");
+		printf("1. Adaugare film artistic ");
+		printf("\n4. Afisare alfabetica dupa titlu ");
+		printf("\nIntroduceti optiune: ");
+		scanf("%d",&opt);
+		
+		switch(opt) {
+			case 1:
+			 primg = add_film_artistic(primg);
+			break;
+			case 4: 
+
+			afisare_alfabetica_titlu(primg);
+			break;
+			default: printf("Ati intrdus o optiune gresita");
+		}		
+		
+		getch();
+		system("cls");
+		
+	}while(opt!=0);
+	
+	return 0;
+}
+
+int main(int argc, char *argv[]) {
