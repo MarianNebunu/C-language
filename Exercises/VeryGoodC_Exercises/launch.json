@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run C program",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/Hello",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "MIMode": "gdb",
+      "preLaunchTask": "Compile + Run C"
+    }
+  ]
+}

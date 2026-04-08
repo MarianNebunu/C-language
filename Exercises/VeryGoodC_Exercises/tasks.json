@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Compile + Run C",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+        "Hello.c",
+        "-o",
+        "Hello"
+      ],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "detail": "Compilează fișierul C și creează main"
+    }
+  ]
+}
